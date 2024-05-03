@@ -159,6 +159,7 @@ div.separator img {
 h1.nextpage {
     text-align: center;
     display: none;
+    padding-bottom: 100px;
 }
 
 /* Highlight when following anchors in the FAQ, since we are at the bottom of the file people cant tell what happens on click */
@@ -3117,7 +3118,7 @@ function partition(e) {
 		}
 	}
 
-	let scroller = document.querySelector(`div.content ${e}`);
+	const scroller = document.querySelector(`div.content ${e}`);
 	if (scroller !== null) {
 		scroller.scrollIntoView();
 	}
@@ -3161,7 +3162,7 @@ window.matchMedia("(max-width: 900px)").addEventListener("change", () => {
 });
 
 window.addEventListener('DOMContentLoaded', () => {
-	// Load ranger image data into our page, this saves space since we are using inlined images
+	// Load ranger image data into our separators, this saves space since we are using inlined images
 	const ranger_svg = document.querySelector('#ranger_data').src;
 	document.querySelectorAll('[alt="FuncGodot Ranger"]').forEach(item => {
 		item.src = ranger_svg;
