@@ -29,6 +29,7 @@ jobs:
       run: |
         npm install
         gulp
+        dir
 
     - name: Deploy to Github Pages
       uses: JamesIves/github-pages-deploy-action@v4
