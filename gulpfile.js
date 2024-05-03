@@ -24,6 +24,7 @@ function process(cb) {
 		.pipe(replace('src="images', 'src="src/images'))
 		.pipe(replace('src="/images', 'src="src/images'))
 		.pipe(replace('src="./images', 'src="src/images'))
+		.pipe(replace('href="images', 'href="src/images'))
 		.on('data', function(file) {
             const buferFile = Buffer.from(htmlMinify.minify(file.contents.toString(), options))
             file.contents = buferFile;
