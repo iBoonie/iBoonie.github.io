@@ -26,21 +26,21 @@ function process(cb) {
 		.pipe(replace('src="./images', 'src="src/images'))
 		.pipe(replace('href="images', 'href="src/images'))
 		.on('data', function(file) {
-            const buferFile = Buffer.from(htmlMinify.minify(file.contents.toString(), options))
-            file.contents = buferFile;
-            return;
-        })
+			const buferFile = Buffer.from(htmlMinify.minify(file.contents.toString(), options))
+			file.contents = buferFile;
+			return;
+		})
 		.pipe(gulp.dest('./'))
 
 	gulp.src(['./src/index.html'])
 		.pipe(fileinclude())
 		.pipe(inlineImages())
 		.on('data', function(file) {
-            const buferFile = Buffer.from(htmlMinify.minify(file.contents.toString(), options))
-            file.contents = buferFile;
-            return;
-        })
-        .pipe(rename('./FuncGodot-Manual.html'))
+			const buferFile = Buffer.from(htmlMinify.minify(file.contents.toString(), options))
+			file.contents = buferFile;
+			return;
+		})
+		.pipe(rename('./FuncGodot-Manual.html'))
 		.pipe(gulp.dest('./'))
 	cb()
 }
