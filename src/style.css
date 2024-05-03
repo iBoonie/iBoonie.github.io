@@ -1,0 +1,273 @@
+/* Constants */
+:root {
+    --header_height: 55px;
+    --dark_background: #0f0b07;
+}
+
+@media only screen and (max-width: 900px) {
+    /* Show the entire page link */
+    li.all {
+        display: block !important;
+        margin-bottom: 10px;
+        font-weight: 800;
+    }
+
+    header {
+        display: none;
+    }
+
+    ul {
+        padding-left: 15px;
+    }
+
+    div.sidenav {
+        position: fixed;
+    }
+
+    div.sidenav > ul {
+        height: 100vh !important;
+    }
+
+    ul.list {
+        display: none;
+        font-size: 1.2rem;
+    }
+
+    ul.list li {
+        line-height: 32px !important;
+    }
+
+    #toggle {
+        display: block !important;
+    }
+
+    blockquote {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+    div.separator {
+        padding: 20px !important;
+    }
+}
+
+/* Base Styles Start */
+body {
+    color: #dbc3bb;
+    font-family: verdana, sans-serif;
+    margin: 0;
+    display: grid;
+}
+
+.center {
+    text-align: center;
+}
+
+.scroller {
+    overflow-x: auto;
+}
+
+h1,
+h2,
+p {
+    overflow-wrap: anywhere;
+}
+
+p,
+li {
+    line-height: 25px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    color: #cf632b;
+    text-decoration: none;
+}
+  
+a:hover,
+a:active {
+    color: #e7ab5f;
+}
+
+pre {
+    padding: 10px;
+    overflow: auto;
+}
+
+code {
+    font-size: 0.9rem;
+    color: #abe7ff;
+}
+
+img {
+    max-width: 100%;
+    max-height: 600px;
+    object-fit: scale-down;
+}
+
+pre,
+tr,
+blockquote,
+code.highlight {
+    background-color: var(--dark_background);
+}
+
+blockquote {
+    padding: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+tr.header {
+    background-color: #070700;
+}
+
+td {
+    border-style: solid;
+    border-width: 2px;
+    padding: 10px;
+}
+
+b.code {
+    font-style: italic;
+    padding: 2px;
+}
+
+b.faq {
+    color:#b7876b;
+    font-weight: 600;
+    font-style: italic;
+}
+
+div.separator {
+    text-align: center;
+    padding: 50px;
+}
+
+div.separator img {
+    height: 300px;
+    opacity: 0.04;
+    filter: grayscale(1);
+}
+
+h1.nextpage {
+    text-align: center;
+    display: none;
+    padding-bottom: 100px;
+}
+
+/* Highlight when following anchors in the FAQ, since we are at the bottom of the file people cant tell what happens on click */
+#FAQ p[id]:target {
+   background-color: #292929;
+}
+
+#FAQ {
+    padding-bottom: 50px;
+}
+/* Base Styles End */
+
+
+/* Header Start */
+header {
+    background-color: #000;
+    text-align: center;
+    height: var(--header_height);
+}
+
+header:hover {
+    cursor: pointer;
+    background-color: #0c0c0c
+}
+/* Header End */
+
+
+/* Sidebar Navigation Start */
+div.sidenav {
+    display: grid;
+}
+
+div.sidenav > ul {
+    margin: 0;
+    padding: 10px 0px 10px 0px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    height: calc(100vh - var(--header_height));
+    grid-column: 1;
+}
+
+div.sidenav li {
+    padding: 0px 10px 0px 10px;
+}
+
+div.sidenav h3 {
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+div.sidenav ul.list {
+    grid-column: 1;
+    background-color: var(--dark_background);
+}
+
+div.sidenav #toggle {
+    grid-column: 2;
+    display: none;
+    background-color: var(--dark_background);
+    padding: 14px;
+    height: 24px;
+    border: solid;
+    border-radius: 0px 0px 10px 0px;
+    border-width: 0px 1px 1px 0px;
+}
+
+div.sidenav #toggle span {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    background: #cdcdcd;
+    border-radius: 3px;
+    z-index: 1;
+}
+
+div.sidenav #toggle:hover {
+    cursor: pointer;
+}
+
+li.all {
+    display: none;
+    text-align: center;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    padding-bottom: 10px !important;
+}
+
+li.all:hover {
+    cursor: pointer;
+}
+/* Sidebar Navigation End */
+
+
+/* Main Body Start */
+div.content {
+    background-color: #1f1f1f;
+    grid-column: 3;
+    overflow-y: scroll;
+    height: 100vh;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Underline local anchors, except for FAQ */
+div.content div:not(#FAQ) a[href^="#"] {
+    border-bottom: 1px dotted;
+}
+/* Main Body End */
