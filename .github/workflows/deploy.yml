@@ -1,4 +1,4 @@
-name: Gulp process html
+name: Deploy
 
 on:
   push:
@@ -33,7 +33,8 @@ jobs:
         npm install
         gulp
 
-    - name: Deploy to Github Pages
-      uses: JamesIves/github-pages-deploy-action@v4
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v4
       with:
-        folder: build
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build
