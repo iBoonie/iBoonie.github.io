@@ -24,21 +24,21 @@ function process(cb) {
 	gulp.src(['src/index.html'])
 		.pipe(fileinclude())
 		.on('data', function(file) {
-            const buferFile = Buffer.from(htmlMinify.minify(file.contents.toString(), options))
-            file.contents = buferFile;
-            return;
-        })
+			const buferFile = Buffer.from(htmlMinify.minify(file.contents.toString(), options))
+			file.contents = buferFile;
+			return;
+		})
 		.pipe(gulp.dest('build'));
 
 	gulp.src(['src/index.html'])
 		.pipe(fileinclude())
 		.pipe(inlineImages())
 		.on('data', function(file) {
-            const buferFile = Buffer.from(htmlMinify.minify(file.contents.toString(), options))
-            file.contents = buferFile;
-            return;
-        })
-        .pipe(rename('FuncGodot-Manual.html'))
+			const buferFile = Buffer.from(htmlMinify.minify(file.contents.toString(), options))
+			file.contents = buferFile;
+			return;
+		})
+		.pipe(rename('FuncGodot-Manual.html'))
 		.pipe(gulp.dest('build'))
 
 	cb()
