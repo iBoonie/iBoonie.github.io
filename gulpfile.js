@@ -1,7 +1,6 @@
 const gulp = require('gulp');
 const fileinclude = require('gulp-file-include');
 const inlineImages = require('gulp-inline-images');
-const replace = require('gulp-replace');
 const rename = require('gulp-rename');
 const htmlMinify = require('html-minifier');
 
@@ -19,29 +18,29 @@ const options = {
 };
 
 function process(cb) {
-	gulp.src(['./src/index.html'])
-		.pipe(fileinclude())
-		.pipe(replace('src="images', 'src="src/images'))
-		.pipe(replace('src="/images', 'src="src/images'))
-		.pipe(replace('src="./images', 'src="src/images'))
-		.pipe(replace('href="images', 'href="src/images'))
-		.on('data', function(file) {
-			const buferFile = Buffer.from(htmlMinify.minify(file.contents.toString(), options))
-			file.contents = buferFile;
-			return;
-		})
-		.pipe(gulp.dest('./'))
+	gulp.src(['src/images/*.*'], {removeBOM:false})
+		.pipe(gulp.dest('build/images'));
 
-	gulp.src(['./src/index.html'])
+	gulp.src(['src/index.html'])
+		.pipe(fileinclude())
+		.on('data', function(file) {
+            const buferFile = Buffer.from(htmlMinify.minify(file.contents.toString(), options))
+            file.contents = buferFile;
+            return;
+        })
+		.pipe(gulp.dest('build'));
+
+	gulp.src(['src/index.html'])
 		.pipe(fileinclude())
 		.pipe(inlineImages())
 		.on('data', function(file) {
-			const buferFile = Buffer.from(htmlMinify.minify(file.contents.toString(), options))
-			file.contents = buferFile;
-			return;
-		})
-		.pipe(rename('./FuncGodot-Manual.html'))
-		.pipe(gulp.dest('./'))
+            const buferFile = Buffer.from(htmlMinify.minify(file.contents.toString(), options))
+            file.contents = buferFile;
+            return;
+        })
+        .pipe(rename('FuncGodot-Manual.html'))
+		.pipe(gulp.dest('build'))
+
 	cb()
 }
 
