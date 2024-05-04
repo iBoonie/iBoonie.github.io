@@ -33,6 +33,8 @@ jobs:
         npm install
         gulp
 
+    - uses: actions/checkout@v4
+
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v4
       with:
