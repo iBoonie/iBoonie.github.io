@@ -23,6 +23,10 @@ jobs:
       matrix:
         node-version: [20.x]
 
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
     - uses: actions/checkout@v4
 
@@ -35,12 +39,6 @@ jobs:
       run: |
         npm install
         gulp
-
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: build
 
     - name: Deploy to GitHub Pages?
       id: deployment
