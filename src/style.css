@@ -82,10 +82,6 @@ li {
     line-height: 25px;
 }
 
-ul {
-    list-style-type: none;
-}
-
 a {
     color: #cf632b;
     text-decoration: none;
@@ -217,6 +213,10 @@ div.sidenav h3 {
 div.sidenav ul.list {
     grid-column: 1;
     background-color: var(--dark_background);
+}
+
+div.sidenav ul {
+    list-style-type: none;
 }
 
 div.sidenav #toggle {
